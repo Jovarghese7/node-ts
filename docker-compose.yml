@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres_db_1
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: postgresdb_node_ts
+    ports:
+      - '5435:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - db_network
+volumes:
+  pgdata:
+networks:
+  db_network:
